@@ -19,4 +19,4 @@ description:
 火影，海贼都能聊。
 <br>
 # 联系方式
-Email: longfeixxxx@gmail.com
+Email: lxxgfeis.me@gmail.com
