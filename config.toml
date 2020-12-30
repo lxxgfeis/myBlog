@@ -1,0 +1,59 @@
+baseURL = "http://longfeis.me/"
+languageCode = "zh-cn"
+title = "隆飞╰♑─✈💕➿➰"
+theme = "mogege"
+hasCJKLanguage = true
+
+paginate = 11
+enableEmoji = true
+enableRobotsTXT = true
+
+preserveTaxonomyNames = true
+
+[blackfriday]
+  hrefTargetBlank = true
+  nofollowLinks = true
+  noreferrerLinks = true
+
+[Permalinks]
+  posts = "/:year/:filename/"
+
+[menu]
+  [[menu.main]]
+    name = "Blog"
+    url = "/posts/"
+    weight = 1
+
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 2
+
+  [[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+[params]
+    since = 2020
+    author = "longfei"
+    avatar = "/blog-images/i/avatar.jpeg"
+    subtitle = "大切なのは あきらめぇど根性だ"
+    home_mode = ""
+    enableGitalk = false
+
+    google_verification = ""
+
+    description = "隆飞的个人博客"
+    keywords = "Golang, Database, macOS"
+
+    beian = ""
+    baiduAnalytics = ""
+    googleAnalytics = ""
+
+    license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
