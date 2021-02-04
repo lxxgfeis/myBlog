@@ -63,3 +63,6 @@ preserveTaxonomyNames = true
     Telegram = "lxxgfeis"
     Twitter = "lxxgfeis"
     Email   = "lxxgfeis.m3@gmail.com"
+
+[markup.goldmark.renderer]
+    unsafe = true
