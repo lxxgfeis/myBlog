@@ -42,7 +42,7 @@ preserveTaxonomyNames = true
 [params]
     since = 2020
     author = "longfei"
-    avatar = "/blog-images/i/avatar.jpeg"
+    avatar = "/blog-images/i/WechatIMG1.jpeg"
     subtitle = "大切なのは あきらめぇど根性だ"
     home_mode = ""
     enableGitalk = false
