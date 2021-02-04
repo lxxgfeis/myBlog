@@ -1,0 +1,4 @@
+[submodule "themes/mogege"]
+	path = themes/mogege
+	url = git@github.com:lxxgfeis/mogege.git
+	branch = my
