@@ -41,3 +41,4 @@ jobs:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: lxxgfeis/lxxgfeis.github.io
           publish_branch: main
+          cname: longfeis.me
