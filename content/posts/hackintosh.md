@@ -1,5 +1,5 @@
 ---
-title: "Hackintosh"
+title: "WIP 黑果折腾笔记（先开坑）"
 date: 2020-12-29T09:25:49+08:00
 draft: false
 tags: ["macOS"]
@@ -7,28 +7,32 @@ categories: ["macOS相关就搁这儿吧"]
 featured_image: ""
 description: ""
 ---
-# WIP 安装黑果回忆录
-
 ## 概述
 
-把黑果安装起来能用并不困难，难在让黑果完美工作。
+第一目标：能用的黑果 ✅ 
 
-本文主要记录本人在安装黑果时学习到的知识，遇到的问题以及问题的解决方案，并非从0开始的黑果安装教程。
+配置 OC 引导，能够正常的进入 macOS，能够安装并使用工作常用的软件。本人系程序猿一枚，常用的工作环境以及软件有 homebrew、golang、docker、vscode 等，这些软件因人而异。
+
+第二目标：好用的黑果 
+
+支持蓝牙、随航、隔空投送、正常休眠唤醒、各种 usb 设备正常工作。这些都是使用黑果的非必要条件。
+
+对于我个人来说，折腾黑果的最大动力就是经济效益。
+
+我的需求是：黑果能够提供给我一个稳定有效的工作环境。我不太介意每次开机需要重新插拔一下键盘或者鼠标的 USB 接口，也不太介意能否正常休眠唤醒（PS. 因为是台式机，所以不太需要休眠，能锁屏就行）。所以对我来说，第一目标就可以满足我的需求，第二目标中的一些功能可以等到需要时再慢慢想办法支持。
 
 ## 介绍
 
-2020年，随着Apple公司转向使用m1芯片，给黑果的未来蒙上了一层阴影。但是，Apple公司仍然会支持intel芯片的产品，也就是说，乐观估计黑果再挺个3～5年应该是不成问题的。
+我最开始接触并动手组建自己的黑果是在 2020 年，这是一个尴尬的时间节点。因为在 2020 年，苹果公司推出了基于 arm 架构的 m1 芯片（据坊间测评，性能提升还蛮多）。这意味着基于x86的黑果可能没有多少日子了。但是，如果是为了工作或者单纯体验一下苹果系统，这并不是很大的问题。本人就属于前者。
 
-就是在这尴尬的时间节点上，我入了黑果的坑。
-
-目前，已成功在两台不同配置的台式机上装上了macOS，分别是：
+目前，我已成功在两台不同配置的台式机上装上了macOS，分别是：
 
 1. 8700k + 华硕ROG的m10f
 2. 10700 + 微星迫击炮b460m
 
-其中配置1是2018年组装的，并非以装黑果为目的。
+其中配置1是2018年组装的，并非以装黑果为目的，安装的时候遇到了一些小问题；配置2是根据黑果的要求进行的硬件选购，安装起来要方便很多。
 
-这篇文章是根据安装过程的回忆编写的，在整个过程中，我学习到了不少知识，也遇到了很多困难。
+对于不同配置，安装过程大同小异，下面就来说说安装黑果的一个大致流程👇。
 
 ## 安装的流程步骤
 
@@ -40,9 +44,9 @@ description: ""
 4. 安装调试
 5. mac setup
 
-下面以配置1，也就是8700k这套，来进行说明。
-
 ## 配置
+
+本节以 8700k 这套为代表来对黑果硬件进行说明。
 
 这套攒于2018年，是当时的顶配。目前服役2年多，当时主要是为了玩游戏，并未考虑后面会安装黑苹果。
 
@@ -84,59 +88,21 @@ description: ""
 
 但是，我还是推荐自己动手制作EFI，其实也没那么困难。
 
-推荐的阅读材料《[OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Install-Guide/)》。对于手动制作EFI的人来说，大概都会看这个install guide吧，本人看了两遍。
+推荐的阅读材料《[OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Install-Guide/)》。对于手动制作EFI的人来说，大概都会看这个install guide吧，我反正是看了两遍。
 
 下面的内容主要是本人的一些笔记，仅供参考。
 
-### 术语
+### 术语解释
 
-本节记录从0开始过程中遇到的一些新的术语。
-
-**ACPI:**  [The Advanced Configuration and Power Interface](https://en.wikipedia.org/wiki/Advanced_Configuration_and_Power_Interface) ，翻译过来就是：[高级配置和电源接口](https://zh.wikipedia.org/wiki/%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE%E4%B8%8E%E7%94%B5%E6%BA%90%E6%8E%A5%E5%8F%A3)。
-
-**AML**:  ACPI机器语言(ACPI Machine Language)
-
-**ASL**:  ACPI源语言(ACPI Source Language)
-
-**DSL:**  
-
-**Kexts**: 驱动
-
-**SSDT**：辅助系统描述表Secondary System Description Table
-
-**DSDT**: 区分系统描述表(Differentiated System Description Table)
-
-DSDT可以看作是包含大多数信息的主体，而较小的信息位则由SSDT传递。
-
-**XCPM**：XNU's CPU Power Management   ？？？？？？
-
-**AWAC**：
-
-**RTC**：
-
-**MMIO**： 内存映射输入输出
-
-**IRQ**： 中断请求（interrupt request）
-
-**iGPU**：核显
-
-**dGPU**：独显
-
-### ACPI
-
-### Kexts
-
-### 配置config.plist
-
-### 一些难以理解的地方
-
-本节记录一些阅读过程中不理解的地方。
-
-"true" 300 series motherboards(Z370 is excluded)
+TODO
 
 ## 制作USB启动盘
 
+TODO
+
 ## 安装调试
+
+TODO
 
 问题：
 
@@ -154,8 +120,16 @@ Usb3.0不识别
 
 ## mac Setup
 
-本章主要是记录黑果安装后的的一些
+mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安装，适用于正规的 macOS 硬件和黑果。针对这部分内容，我会单独再写一篇文章。这里就不再赘述。
 
+## 展示环节
+
+TODO
+
+## 参考资料
+
+1. 《[OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Install-Guide/)》黑果入门级教程，写得非常详细
+2. [新手挑战黑苹果-超详细的OpenCore黑苹果安装教程](https://www.bilibili.com/video/BV18V41187JZ) B站上的视频教程
 
 <br> 
 
