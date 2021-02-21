@@ -11,7 +11,11 @@ description: ""
 
 📝本文记录我的`mac`的设置，以及我常用的软件、工作环境等信息。
 
-## 调整`new mac`的系统设置
+## 🆕调整新`mac`的系统设置
+
+### 访达设置
+
+将个人的home目录和dev目录加入左侧边栏
 
 ### 三指拖移
 
@@ -20,10 +24,16 @@ description: ""
 ### `launchpad`图标大小调整
 
 ```bash
-defaults write com.apple.dock springboard-columns -int 10
-defaults write com.apple.dock springboard-rows -int 8
+defaults write com.apple.dock springboard-columns -int 16
+defaults write com.apple.dock springboard-rows -int 10
 defaults write com.apple.dock ResetLaunchPad -bool TRUE
 killall Dock
+```
+
+### 🔧安装基础工具包
+
+```bash
+xcode-select --install
 ```
 
 ## 科学上网
@@ -35,39 +45,40 @@ macOS科学上网工具：[clashX](https://github.com/yichengchen/clashX)
 ### [homebrew](https://brew.sh/index_zh-cn)
 
 ```bash
-xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 ## 安装常见软件
 
-| 软件               | 说明                     |
-| ------------------ | ------------------------ |
-| google-chrome      | 谷歌浏览器               |
-| typora             | 所见即所得markdown编辑器 |
-| appcleaner         | 软件卸载                 |
-| iterm2             | terminal替代品           |
-| tmux               | terminal分屏             |
-| Alfred4            | finder替代品             |
-| visual-studio-code | 编辑器，maybe IDE        |
-| wechat             | 微信                     |
-| 企业微信           | 工作使用                 |
-| WPS                | 办公套件                 |
-| OneNote            | 微软出品的笔记软件       |
-| Skim               | PDF阅读器                |
-| Snipaste           | 截图工具                 |
-| MacTex             | Latex编译器              |
-| texstudio          | Latex编辑器              |
-| Zotero             | 论文管理                 |
-| Itsycal            | 接管macOS日历            |
-| RunCat             | 一个奔跑的小猫           |
-| 网易云音乐         | 听歌                     |
+| 软件               | 说明                     | brew安装 |
+| ------------------ | ------------------------ | :------: |
+| google-chrome      | 谷歌浏览器               |    *     |
+| typora             | 所见即所得markdown编辑器 |    *     |
+| appcleaner         | 软件卸载                 |    *     |
+| iterm2             | terminal替代品           |    *     |
+| tmux               | terminal分屏             |    *     |
+| Alfred4            | finder替代品             |    *     |
+| visual-studio-code | 编辑器，maybe IDE        |    *     |
+| wechat             | 微信                     |          |
+| 企业微信           | 工作使用                 |          |
+| WPS                | 办公套件                 |          |
+| OneNote            | 微软出品的笔记软件       |          |
+| Skim               | PDF阅读器                |          |
+| Snipaste           | 截图工具                 |    *     |
+| MacTex             | Latex编译器              |          |
+| texstudio          | Latex编辑器              |          |
+| Zotero             | 论文管理                 |          |
+| Itsycal            | 接管macOS日历            |          |
+| RunCat             | 一个奔跑的小猫           |          |
+| 网易云音乐         | 听歌                     |          |
+| Notion             | 笔记软件                 |          |
 
 ## chrome插件
 
 1. Google 翻译
 2. SwitchyOmega 一个代理设置工具
-3. OneNote Web Clipper 
+3. Bitwarden 密码管理插件，主要用来生成随机密码
+4. OneNote Web Clipper OneNote的网页剪藏插件
 
 ## 配置开发环境
 
@@ -92,11 +103,6 @@ ssh-keygen -t ed25519 -C "mymbp@home"
 ### GO
 
 ## 其他
-
-### 密码管理
-
-1. `bitwarden`
-2. `chrome`浏览器自动填充
 
 ## 总结
 
