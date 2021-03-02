@@ -110,11 +110,39 @@ description: ""
 
 ### 制作USB启动盘
 
-TODO
+1. 下载macOS安装镜像
+
+   我使用过两种方法来下载macOS的安装镜像，根据实际的安装体验，我比较推荐recovery模式，更方便快捷:
+
+   1. 使用recovery模式
+
+      对于recovery模式，只需要在命令行执行一条简单的命令就可以了：
+
+      ```bash
+      ./macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 -os latest download
+      ```
+
+      macrecovery是OC官方提供的工具，其通过下载一个恢复dmg，在安装时再次联网下载完整的macOS，就跟白苹果的开机按CMD+R重启到恢复模式一样。Recovery dmg比较小，用一个小u盘就能搞定。
+
+      对于其他版本，也有不同的命令，可以点开[recovery_urls.txt](https://raw.githubusercontent.com/acidanthera/OpenCorePkg/master/Utilities/macrecovery/recovery_urls.txt)查看。
+
+   2. 完整模式
+
+      完整的安装包通常有好几个G，官网下载时间比较长。国内的话可以通过下载其他人，比如黑果小兵，分享的安装包。通过[etcher](https://www.balena.io/etcher/)，将安装包写入我们的u盘，最后在用自己的EFI文件覆盖u盘里的。
+
+2. 写盘
+
+   写盘的关键点在于预留好一块fat32格式的EFI分区，用来存放接下来要制作的EFI文件。方式方法也比较多：
+
+   - windows的磁盘管理器
+   - 使用第三方工具，，如[rufus](https://rufus.ie/)、[etcher](https://www.balena.io/etcher/)等，轻松创建USB启动盘
+   - 使用命令行工具`diskpart`
 
 ### 收集Kexts、Drivers以及SSDT
 
-TODO
+- SSDTs和DSDTs，以`.aml`为文件名后缀，放到ACPI文件夹下
+- Kexts，以`.kext`为后缀，放到Kexts文件夹下
+- 固件驱动，以`.efi` 为后缀，放到Drivers文件夹下
 
 ### 配置config.plist
 
