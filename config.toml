@@ -42,7 +42,7 @@ preserveTaxonomyNames = true
 [params]
     since = 2020
     author = "longfei"
-    avatar = "https://cdn.jsdelivr.net/gh/lxxgfeis/myImage/img/avatar.JPEG"
+    avatar = "https://cdn.jsdelivr.net/gh/longf2021/myImage/avatar/me_zjsms.JPG"
     subtitle = "大切なのは あきらめぇど根性だ"
     home_mode = ""
     enableGitalk = false

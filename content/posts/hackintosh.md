@@ -144,6 +144,8 @@ description: ""
 - Kexts，以`.kext`为后缀，放到Kexts文件夹下
 - 固件驱动，以`.efi` 为后缀，放到Drivers文件夹下
 
+TODO
+
 ### 配置config.plist
 
 TODO
@@ -152,8 +154,6 @@ TODO
 
 TODO
 
-提纲：
-
 1. bios设置
 2. 格式化mac磁盘
 3. u盘启动到硬盘启动
@@ -161,27 +161,35 @@ TODO
 5. 自定义USB端口
 6. 屏蔽不支持的独显（双显卡以及切换）
 
-问题：
+可能需要解决的问题：
 
-双显卡及其切换
-
-Usb3.0不识别
-
-显示器字体发虚
-
-双系统相关：更改opencore默认启动项；windows正常使用独显
-
-开机黑屏，必须重启显示器或者插拔连接线才能正常工作
-
-蓝牙
+ - 双显卡及其切换
+ - Usb3.0不识别
+ - 显示器字体发虚
+ - 双系统相关：更改opencore默认启动项；windows正常使用独显
+ - 开机黑屏，必须重启显示器或者插拔连接线才能正常工作
+ - 蓝牙
 
 ## mac Setup
 
 mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安装，适用于正规的 macOS 硬件和黑果。针对这部分内容，我会单独再写一篇文章。这里就不再赘述。
 
-## 展示环节
+## 成果展示环节
+- 系统信息  
+![系统信息](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312083021.png)
 
-TODO
+- 内存  
+![内存](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312083113.png)
+
+- 核显  
+![显卡](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312084248.png)
+
+- 蓝牙和无线  
+![蓝牙](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312083451.png)
+
+- 测试隔空投送功能  
+![隔空投送](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312084101.png))
+
 
 ## 参考资料
 
