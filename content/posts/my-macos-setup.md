@@ -91,8 +91,6 @@ macOS科学上网工具：[clashX](https://github.com/yichengchen/clashX)
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-### tmux
-
 ### 生成ssh key
 
 主要是用于下载git项目。
@@ -100,10 +98,6 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ```bash
 ssh-keygen -t ed25519 -C "mymbp@home"
 ```
-
-### hugo
-
-### GO
 
 ## 其他
 

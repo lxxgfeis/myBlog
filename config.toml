@@ -1,4 +1,4 @@
-baseURL = "http://longfeis.me/"
+baseURL = "https://longfeis.me/"
 languageCode = "zh-cn"
 title = "隆飞"
 theme = "mogege"
@@ -59,10 +59,10 @@ preserveTaxonomyNames = true
     license= '本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" style="color:DeepPink" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可'
 
 [params.social]
-    GitHub = "lxxgfeis"
-    Telegram = "lxxgfeis"
-    Twitter = "lxxgfeis"
-    Email   = "lxxgfeis.m3@gmail.com"
+    GitHub = "longf2021"
+    Telegram = "longf2021"
+    Twitter = "longfeixx"
+    Email   = "longf1992@gmail.com"
 
 [markup.goldmark.renderer]
     unsafe = true
