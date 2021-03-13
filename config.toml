@@ -62,7 +62,7 @@ preserveTaxonomyNames = true
     GitHub = "longf2021"
     Telegram = "longf2021"
     Twitter = "longfeixx"
-    Email   = "longf1992@gmail.com"
+    Email   = "lf.x.0720@gmail.com"
 
 [markup.goldmark.renderer]
     unsafe = true

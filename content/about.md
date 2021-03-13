@@ -26,7 +26,8 @@ description:
 使用的主题是[Mogege](https://github.com/Mogeko/Mogege)，感谢原作者的付出，🙏。
 <br>
 # 联系方式
-本博客未开通评论系统，如有需求，请发送邮件到我的邮箱吧。我会尽快回复你的。
+本博客未开通评论系统，如有需求，请发送邮件到我的邮箱吧。我会尽快回复你的。  
+Email: lf.x.0720@gmail.com
 
 <br> 
 
