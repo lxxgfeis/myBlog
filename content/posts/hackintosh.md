@@ -188,7 +188,7 @@ mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安
 ![蓝牙](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312083451.png)
 
 - 测试隔空投送功能  
-![隔空投送](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312084101.png))
+![隔空投送](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312084101.png)
 
 
 ## 参考资料
