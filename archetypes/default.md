@@ -2,8 +2,8 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: false
-tags: [""]
-categories: ["未知分类"]
+tags: ["Thinking"]
+categories: ["不知所云"]
 featured_image: ""
 description: ""
 ---
