@@ -3,7 +3,7 @@ title: "黑果折腾笔记 WIP"
 date: 2020-12-29T09:25:49+08:00
 draft: false
 tags: ["macOS"]
-categories: ["macOS相关就搁这儿吧"]
+categories: ["Mac/Linux杂七杂八"]
 featured_image: ""
 description: ""
 ---
