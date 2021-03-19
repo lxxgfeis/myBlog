@@ -3,7 +3,7 @@ title: "My macOS Setup"
 date: 2021-02-02T22:48:52+08:00
 draft: false
 tags: ["macOS"]
-categories: ["macOS相关就搁这儿吧?"]
+categories: ["💻 macOS相关就搁这儿吧"]
 featured_image: ""
 description: ""
 ---

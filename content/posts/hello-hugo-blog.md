@@ -3,7 +3,7 @@ title: "Hello Hugo Blog"
 date: 2020-12-25T08:54:19+08:00
 draft: false
 tags: ["Thinking"]
-categories: ["又TM想多了.."]
+categories: ["又TM想多了"]
 featured_image: 
 description: 
 ---
