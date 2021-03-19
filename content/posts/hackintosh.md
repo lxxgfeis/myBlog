@@ -7,6 +7,8 @@ categories: ["macOS相关就搁这儿吧"]
 featured_image: ""
 description: ""
 ---
+<br>
+
 ## 概述
 
 组黑苹果有两个层次，如下所述：
@@ -50,9 +52,9 @@ description: ""
 
 ## 配置
 
-我将以 8700k 这套为代表来对黑果硬件进行说明。
+自己的配置务必搞清楚！需要搞清楚哪些？可以参考我的配置单。👇
 
-这套攒于2018年，是当时的顶配。目前服役2年多，当时主要是为了玩游戏，并未考虑后面会安装黑苹果。
+我将以 8700k 这套为代表来对黑果硬件进行说明。这套攒于2018年，是当时的顶配。目前服役2年多，当时主要是为了玩游戏，并未考虑后面会安装黑苹果。
 
 先列下配置，再说下这套配置的问题，最后在说下配置的选择。
 
@@ -90,7 +92,7 @@ description: ""
 
 最简单的方法就是收集别人做好的EFI。可以到github上以`CPU 芯片组 EFI`为关键词进行搜索，如`8700k z370 EFI`，也可以去远景论坛看看。
 
-但是，我还是推荐自己动手制作EFI，其实也没那么困难。推荐的阅读材料《[OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Install-Guide/)》。对于手动制作EFI的人来说，大概都会看这个install guide吧，我反正是看了两遍。
+但是，我还是推荐自己动手制作EFI，其实也没那么困难。推荐的阅读材料《[OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Install-Guide/)》。对于手动制作EFI的人来说，大概都会看这个install guide吧，多看多动手。
 
 制作EFI，主要分为三大部分：
 
@@ -98,12 +100,12 @@ description: ""
 2. 收集Kexts、Drivers以及SSDT
 3. 配置config.plist
 
-👇是一些我认为的**关键术语**，以及我个人的理解：
+👇是一些我认为的**关键术语**，理解后可以更好的阅读《Guide》：
 
 | 术语        | 描述                                                         |
 | ----------- | ------------------------------------------------------------ |
 | **ACPI**    | 高级配置与电源接口。是一种规范，用来定义固件抽象接口。详细可以阅读 [维基百科](https://en.wikipedia.org/wiki/Advanced_Configuration_and_Power_Interface) |
-| **Kexts**   | 内核拓展，可以理解为macOS的驱动                              |
+| **Kexts**   | **k**ernel **ext**ension（内核拓展），可以理解为macOS的驱动  |
 | **Drivers** | 指UEFI驱动                                                   |
 | **DSDT**    | Differentiated System Description Table. DSDT可以被看作是持有大部分信息的主体，就如同项目蓝图。 |
 | **SSDT**    | Secondary System Description Table. SSDT传递较小的信息，可以想象为项目进展中的便利贴。 |
@@ -120,6 +122,7 @@ description: ""
 
       ```bash
       ./macrecovery.py -b Mac-E43C1C25D4880AD6 -m 00000000000000000 -os latest download
+      # 🔎 参考 install guide 获取详细说明 
       ```
 
       macrecovery是OC官方提供的工具，其通过下载一个恢复dmg，在安装时再次联网下载完整的macOS，就跟白苹果的开机按CMD+R重启到恢复模式一样。Recovery dmg比较小，用一个小u盘就能搞定。
@@ -142,13 +145,102 @@ description: ""
 
 - SSDTs和DSDTs，以`.aml`为文件名后缀，放到ACPI文件夹下
 - Kexts，以`.kext`为后缀，放到Kexts文件夹下
-- 固件驱动，以`.efi` 为后缀，放到Drivers文件夹下
+- Firmware Drivers（固件驱动），以`.efi` 为后缀，放到Drivers文件夹下
 
-TODO
+#### Firmware Drivers
+
+| 名称                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [HfsPlus.efi](https://github.com/acidanthera/OcBinaryData/blob/master/Drivers/HfsPlus.efi) | 能够显示 HFS 卷，HFS（分层文件系统，macOS上的文件系统）      |
+| [OpenRuntime.efi](https://github.com/acidanthera/OpenCorePkg/releases) | 用作OpenCore的扩展，以帮助修补boot.efi以获得NVRAM修复和更好的内存管理。 |
+
+#### Kexts
+
+| 名称                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [VirtualSMC](https://github.com/acidanthera/VirtualSMC/releases) | 仿真macs上的SMC芯片，如果没有此芯片，macOS将无法启动         |
+| [Lilu](https://github.com/acidanthera/Lilu/releases)         | 许多其他Kexts依赖Lilu，如AppleALC, WhateverGreen, VirtualSMC，没有Lilu，这些Kexts无法工作 |
+| SMCProcessor.kext                                            | 🌡️ VirtualSMC插件，用于监控CPU温度                            |
+| SMCSuperIO.kext                                              | 🍃 VirtualSMC插件，用于监控风扇转速                           |
+| [WhateverGreen](https://github.com/acidanthera/WhateverGreen/releases) | 显卡驱动                                                     |
+| [AppleALC](https://github.com/acidanthera/AppleALC/releases) | 声卡驱动                                                     |
+| [IntelMausi](https://github.com/acidanthera/IntelMausi/releases)<br />[LucyRTL8125Ethernet](https://www.insanelymac.com/forum/files/file/1004-lucyrtl8125ethernet/) | 以太网卡驱动。本人是英特尔I219-V，所以选这个，根据自己情况选择。<br />我的另外一台是realtek的2.5G的网卡，所以选LucyRTL8125Ethernet |
+| [USBInjectAll](https://bitbucket.org/RehabMan/os-x-usb-inject-all/downloads/) | 可以暂时使用此kext启用所有端，以便确认哪些端口是真正需要注入的。根据我的个人理解，USBInjectAll和XHCI-unsupported在启动时都不需要。 |
+| 网卡和蓝牙                                                   | 买的是免驱的，都不需要                                       |
+| [NVMeFix](https://github.com/acidanthera/NVMeFix/releases)   | 🔌 修正非苹果NVMe的电源管理和初始化                           |
+| [SATA-Unsupported](https://github.com/khronokernel/Legacy-Kexts/blob/master/Injectors/Zip/SATA-unsupported.kext.zip) | 没有SATA，不需要                                             |
+
+#### ACPI
+
+✅ 确定cpu的平台？
+
+桌面cpu，8700k的平台是Coffee Lake
+
+✅ 确定需要哪些SSDT？
+
+参考《Guide》，我们需要如下SSDT
+
+| 名称         | 作用                                                         |
+| ------------ | ------------------------------------------------------------ |
+| SSDT-PLUG    | 修复电源管理                                                 |
+| SSDT-EC/USBX | 1. 解决EC与macOS的AppleACPIEC不兼容问题<br />2. 创建一个虚拟的EC来满足macOS的AppleBusPowerController的需要<br />3. AppleBusPowerController也需要USBX设备提供USB电源属性 |
+| SSDT-AWAC    | ⏰ 修复系统时钟                                               |
+| SSDT-PMC     | 修复NVRAM，但貌似z370主板不需要                              |
+
+综上所述，我们使用将前三个放到ACPI文件夹下就可以了。PS：下载《Guide》中预编译好的就可以，感兴趣的话可以后面在动手自己编译。
 
 ### 配置config.plist
 
-TODO
+*这节大部分上是在翻译《 [guide](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html#starting-point)》*，还有一些自己的理解。
+
+配置config.plist是比较麻烦的一步，也是最容易出错的一步。建议去睡一觉，睡醒之后再来操作，操作之前，多看几遍教程。
+
+#### ACPI
+
+##### ADD
+
+add下的条目与ACPI文件夹下的内容一一对应，这儿[ProperTree](https://github.com/corpnewt/ProperTree)会帮我们弄好，只需要检查一下即可
+
+#### Booter
+
+##### Quirks
+
+检查并改正需要修改的值即可
+
+| 名称                   | 值   | 修改？ | 说明                                                         |
+| ---------------------- | ---- | ------ | ------------------------------------------------------------ |
+| AvoidRuntimeDefrag     | YES  |        | 修复运行时服务，例如日期、时间、NVRAM、电源控制等            |
+| DevirtualiseMmio       | YES  | *      | 减少内存占用，修复z390内存分配问题                           |
+| EnableSafeModeSlide    | YES  |        | 让slide变量能在安全模式下使用（🙈 不懂）                      |
+| EnableWriteUnprotector | NO   | *      | 写保护，和RebuildAppleMemoryMap是冲突的，我们关掉这个        |
+| ProtectUefiServices    | NO   | *      | 保护UEFI的服务不被firmware覆盖。在z390主板上启用             |
+| ProvideCustomSlide     | YES  |        | 用于计算slide变量，只有在debug日志中看到“OCABC: All slides are usable! You can disable ProvideCustomSlide!”，才需要关闭 |
+| RebuildAppleMemoryMap  | YES  | *      | 生成与macOS兼容的Memory Map                                  |
+| SetupVirtualMap        | YES  |        | 修复SetVirtualAddresses对虚拟地址的调用                      |
+| SyncRuntimePermissions | YES  | *      | 修复MAT tables对齐，跟RebuildAppleMemoryMap相关              |
+
+#### DeviceProperties
+
+##### Add
+
+| 名称                       | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| PciRoot(0x0)/Pci(0x2,0x0)  | 帧缓冲相关，用于设置核显属性。<br />*AAPL,ig-platform-id*是macOS用来决定核显驱动如何和系统交互的。<br />*framebuffer-patch-enable*是启用WhateverGreen.kext的patch功能<br />*framebuffer-stolenmem*用于设置核显显存为19MB，通常这个不需要的，因为通过BIOS可以设置为64MB。<br />当使用独显输出时，不需要设置framebuffer-相关。 |
+| PciRoot(0x0)/Pci(0x1b,0x0) | 设置声卡布局。<br />我的板载声卡是Realtek ALC1220，通过查询《[AppleALC Supported Codecs](https://github.com/acidanthera/AppleALC/wiki/Supported-codecs)》知道我们的layout有：1, 2, 3, 5, 7, 11, 13, 15, 16, 21, 27, 28, 29, 34。随便选一个填上就好。安装好系统以后，如果声卡不工作，再一个个试就行 |
+
+#### Kernel
+
+#### Misc
+
+#### NVRAM
+
+#### PlatformInfo
+
+#### UEFI
+
+**没有提到的内容，不用管，就保持默认就好**
+
+配置好以后，可以使用“https://opencore.slowgeek.com/”对我们的config.plist进行检查。选择好CPU和OC的版本**以后**，将config.plist拖进去。根据它给出的提示进行改正。
 
 ## 安装调试
 
@@ -172,7 +264,7 @@ TODO
 
 ## mac Setup
 
-mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安装，适用于正规的 macOS 硬件和黑果。针对这部分内容，我会单独再写一篇文章。这里就不再赘述。
+mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安装，适用于正规的 macOS 硬件和黑果。针对这部分内容，我会单独再写[一篇文章](https://longfeis.me/2021/my-macos-setup/)。这里就不再赘述。
 
 ## 成果展示环节
 - 系统信息  
@@ -190,12 +282,54 @@ mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安
 - 测试隔空投送功能  
 ![隔空投送](https://cdn.jsdelivr.net/gh/longf2021/myImage/hackintosh/20210312084101.png)
 
+## 附录一：英特尔CPU
+
+发展历史
+
+| 芯片架构 | 备注                                             |
+| -------- | ------------------------------------------------ |
+| 4004     | 1971年11月15日世界上第一块个人微型处理器4004诞生 |
+| 8086     | 1978年6月8日                                     |
+| 80286    | 1982年2月2日，英特尔的最后一块16位处理器         |
+| 80386    | 1985年，开始进入到了32位时代                     |
+| Pentium  | 奔腾时代                                         |
+| Core     | 酷睿时代                                         |
+
+🖥️ 台式机微架构名称
+
+| Code Name                                                    | Series                                                       | Release       |
+| :----------------------------------------------------------- | :----------------------------------------------------------- | :------------ |
+| [Yonah, Conroe and Penryn](https://dortania.github.io/OpenCore-Install-Guide/config.plist/penryn.html) | E8XXX, Q9XXX, [etc 1 (opens new window)](https://en.wikipedia.org/wiki/Yonah_(microprocessor)), [etc 2(opens new window)](https://en.wikipedia.org/wiki/Penryn_(microarchitecture)) | 2006-2009 era |
+| [Lynnfield and Clarkdale](https://dortania.github.io/OpenCore-Install-Guide/config.plist/clarkdale.html) | 5XX-8XX                                                      | 2010 era      |
+| [Sandy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config.plist/sandy-bridge.html) | 2XXX                                                         | 2011 era      |
+| [Ivy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config.plist/ivy-bridge.html) | 3XXX                                                         | 2012 era      |
+| [Haswell](https://dortania.github.io/OpenCore-Install-Guide/config.plist/haswell.html) | 4XXX                                                         | 2013-2014 era |
+| [Skylake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/skylake.html) | 6XXX                                                         | 2015-2016 era |
+| [Kaby Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/kaby-lake.html) | 7XXX                                                         | 2017 era      |
+| [Coffee Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html) | 8XXX-9XXX                                                    | 2017-2019 era |
+| [Comet Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html) | 10XXX                                                        | 2020 era      |
+
+💻 笔记本微架构名称
+
+| Code Name                                                    | Series     | Release       |
+| :----------------------------------------------------------- | :--------- | :------------ |
+| [Clarksfield and Arrandale](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/arrandale.html) | 3XX-9XX    | 2010 era      |
+| [Sandy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/sandy-bridge.html) | 2XXX       | 2011 era      |
+| [Ivy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/ivy-bridge.html) | 3XXX       | 2012 era      |
+| [Haswell](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/haswell.html) | 4XXX       | 2013-2014 era |
+| [Broadwell](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/broadwell.html) | 5XXX       | 2014-2015 era |
+| [Skylake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/skylake.html) | 6XXX       | 2015-2016 era |
+| [Kaby Lake and Amber Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html) | 7XXX       | 2017 era      |
+| [Coffee Lake and Whiskey Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake.html) | 8XXX       | 2017-2018 era |
+| [Coffee Lake Plus and Comet Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html) | 9XXX-10XXX | 2019-2020 era |
+| [Ice Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/icelake.html) | 10XXX      | 2019-2020 era |
 
 ## 参考资料
 
 1. 《[OpenCore-Install-Guide](https://dortania.github.io/OpenCore-Install-Guide/)》黑果入门级教程，写得非常详细
 2. [新手挑战黑苹果-超详细的OpenCore黑苹果安装教程](https://www.bilibili.com/video/BV18V41187JZ) B站上的视频教程
+3. [英特尔微处理器列表](https://zh.wikipedia.org/wiki/%E8%8B%B1%E7%89%B9%E5%B0%94%E5%BE%AE%E5%A4%84%E7%90%86%E5%99%A8%E5%88%97%E8%A1%A8)
 
-<br> 
+
 
 <center>  ·End·  </center>

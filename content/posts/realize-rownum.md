@@ -1,14 +1,14 @@
 ---
-title: "Realize Rownum"
+title: "基于MySQL的rownum伪列功能实现"
 date: 2021-03-16T23:21:17+08:00
 draft: false
 tags: ["Databasee"]
-categories: ["Database"]
+categories: ["吃饭的家伙，技术必须要硬"]
 featured_image: ""
 description: ""
 ---
 
-# 基于MySQL的分布式数据库中实现rownum伪列功能
+<br>
 
 ## rownum伪列功能
 
