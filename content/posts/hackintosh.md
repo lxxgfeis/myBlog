@@ -367,7 +367,7 @@ add下的条目与ACPI文件夹下的内容一一对应，这儿[ProperTree](htt
 
 ---
 
-恭喜（👏🎉），到这儿，我们就完成了第一个目标：能用的黑果。后面就是一些调优的工作了，安装实际需求来。
+恭喜（👏🎉），到这儿，我们就完成了第一个目标：能用的黑果。后面就是一些调优的工作了，按照你的实际需求来。
 
 ## 启动后调优
 
@@ -418,7 +418,7 @@ mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安
 
 ## 附录一：英特尔CPU
 
-发展历史
+### 发展历史
 
 | 芯片架构 | 备注                                             |
 | -------- | ------------------------------------------------ |
@@ -428,35 +428,38 @@ mac Setup是指对一个刚安装好的 mac 系统进行系统配置和软件安
 | 80386    | 1985年，开始进入到了32位时代                     |
 | Pentium  | 奔腾时代                                         |
 | Core     | 酷睿时代                                         |
+||||
 
-🖥️ 台式机微架构名称
+### 🖥️ 台式机微架构名称
 
 | Code Name                                                    | Series                                                       | Release       |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :------------ |
-| [Yonah, Conroe and Penryn](https://dortania.github.io/OpenCore-Install-Guide/config.plist/penryn.html) | E8XXX, Q9XXX  | 2006-2009 era |
-| [Lynnfield and Clarkdale](https://dortania.github.io/OpenCore-Install-Guide/config.plist/clarkdale.html) | 5XX-8XX                                                      | 2010 era      |
-| [Sandy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config.plist/sandy-bridge.html) | 2XXX                                                         | 2011 era      |
-| [Ivy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config.plist/ivy-bridge.html) | 3XXX                                                         | 2012 era      |
-| [Haswell](https://dortania.github.io/OpenCore-Install-Guide/config.plist/haswell.html) | 4XXX                                                         | 2013-2014 era |
-| [Skylake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/skylake.html) | 6XXX                                                         | 2015-2016 era |
-| [Kaby Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/kaby-lake.html) | 7XXX                                                         | 2017 era      |
-| [Coffee Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/coffee-lake.html) | 8XXX-9XXX                                                    | 2017-2019 era |
-| [Comet Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/comet-lake.html) | 10XXX                                                        | 2020 era      |
+| Yonah, Conroe and Penryn | E8XXX, Q9XXX  | 2006-2009 era |
+| Lynnfield and Clarkdale | 5XX-8XX        | 2010 era      |
+| Sandy Bridge | 2XXX                      | 2011 era      |
+| Ivy Bridge | 3XXX                                                         | 2012 era      |
+| Haswell | 4XXX                                                         | 2013-2014 era |
+| Skylakex | 6XXX                                                         | 2015-2016 era |
+| Kaby Lakex | 7XXX                                                         | 2017 era      |
+| Coffee Lake | 8XXX-9XXX                                                    | 2017-2019 era |
+| Comet Lake | 10XXX                                                        | 2020 era      |
+||||
 
-💻 笔记本微架构名称
+### 💻 笔记本微架构名称
 
 | Code Name                                                    | Series     | Release       |
 | :----------------------------------------------------------- | :--------- | :------------ |
-| [Clarksfield and Arrandale](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/arrandale.html) | 3XX-9XX    | 2010 era      |
-| [Sandy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/sandy-bridge.html) | 2XXX       | 2011 era      |
-| [Ivy Bridge](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/ivy-bridge.html) | 3XXX       | 2012 era      |
-| [Haswell](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/haswell.html) | 4XXX       | 2013-2014 era |
-| [Broadwell](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/broadwell.html) | 5XXX       | 2014-2015 era |
-| [Skylake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/skylake.html) | 6XXX       | 2015-2016 era |
-| [Kaby Lake and Amber Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html) | 7XXX       | 2017 era      |
-| [Coffee Lake and Whiskey Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake.html) | 8XXX       | 2017-2018 era |
-| [Coffee Lake Plus and Comet Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/coffee-lake-plus.html) | 9XXX-10XXX | 2019-2020 era |
-| [Ice Lake](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/icelake.html) | 10XXX      | 2019-2020 era |
+| Clarksfield and Arrandale | 3XX-9XX    | 2010 era      |
+| Sandy Bridge | 2XXX       | 2011 era      |
+| Ivy Bridge | 3XXX       | 2012 era      |
+| Haswell | 4XXX       | 2013-2014 era |
+| Broadwell] | 5XXX       | 2014-2015 era |
+| Skylake | 6XXX       | 2015-2016 era |
+| Kaby Lake and Amber Lake | 7XXX       | 2017 era      |
+| Coffee Lake and Whiskey Lake | 8XXX       | 2017-2018 era |
+| Coffee Lake Plus and Comet Lake | 9XXX-10XXX | 2019-2020 era |
+| Ice Lake | 10XXX      | 2019-2020 era |
+||||
 
 ## 参考资料
 
