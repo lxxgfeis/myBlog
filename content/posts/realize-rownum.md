@@ -3,7 +3,7 @@ title: "基于MySQL的rownum伪列功能实现"
 date: 2021-03-16T23:21:17+08:00
 draft: false
 tags: ["Databasee"]
-categories: ["开机要kuai技术才硬"]
+categories: ["coding 1024"]
 featured_image: ""
 description: ""
 ---
