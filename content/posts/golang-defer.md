@@ -1,5 +1,5 @@
 ---
-title: "Golang Defer"
+title: "golang中的defer笔记"
 date: 2021-04-16T21:32:13+08:00
 draft: false
 tags: ["golang"]
@@ -7,8 +7,6 @@ categories: ["coding 1024"]
 featured_image: ""
 description: ""
 ---
-
-# golang中的defer笔记
 
 ## 关键点
 - defer是在return之前执行的

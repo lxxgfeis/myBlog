@@ -1,5 +1,5 @@
 ---
-title: "上海迪斯尼乐园一日游"
+title: "上海·迪斯尼乐园"
 date: 2021-03-30T09:36:40+08:00
 draft: false
 tags: ["TravelNotes"]

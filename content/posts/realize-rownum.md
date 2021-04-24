@@ -1,5 +1,5 @@
 ---
-title: "基于MySQL的rownum伪列功能实现"
+title: "基于MySQL的rownum伪列功能"
 date: 2021-03-16T23:21:17+08:00
 draft: false
 tags: ["Databasee"]
