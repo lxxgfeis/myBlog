@@ -1,6 +1,6 @@
 baseURL = "https://longfeis.me/"
 languageCode = "zh-cn"
-title = "Longfei"
+title = "Longfei's Blog"
 theme = "mogege"
 hasCJKLanguage = true
 
