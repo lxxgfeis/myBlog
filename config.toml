@@ -4,7 +4,7 @@ title = "Longfei's Blog"
 theme = "mogege"
 hasCJKLanguage = true
 
-paginate = 11
+paginate = 13
 enableEmoji = true
 enableRobotsTXT = true
 
@@ -25,25 +25,30 @@ preserveTaxonomyNames = true
     weight = 1
 
   [[menu.main]]
+    name = "Wiki"
+    url = "/wiki/"
+    weight = 2
+
+  [[menu.main]]
     name = "Categories"
     url = "/categories/"
-    weight = 2
+    weight = 3
 
   [[menu.main]]
     name = "Tags"
     url = "/tags/"
-    weight = 3
+    weight = 4
 
   [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 4
+    weight = 5
 
 [params]
     since = 2020
     author = "longfei"
     avatar = "https://cdn.jsdelivr.net/gh/longf2021/myImage/avatar/me_zjsms.JPG"
-    subtitle = "大切なのは あきらめぇど根性だ"
+    subtitle = "一个有点菜的程序猿"
     home_mode = ""
     enableGitalk = false
 
@@ -59,7 +64,7 @@ preserveTaxonomyNames = true
     license= '本文采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/3.0/cn/deed.zh" style="color:LightBlue" target="_blank">《署名-非商业性使用-禁止演绎 3.0 中国大陆》</a> 协议进行许可'
 
 [params.social]
-    GitHub = "longf2021"
+    GitHub = "oops-lgtm"
     Telegram = "longf2021"
     Twitter = "longfeixx"
     Email   = "lf.x.0720@gmail.com"
