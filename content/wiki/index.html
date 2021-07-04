@@ -173,6 +173,8 @@ Error message and password prompt
 
 <li>$:/SiteTitle</li>
 
+<li>$:/state/showeditpreview</li>
+
 <li>$:/state/tab--1418380610</li>
 
 <li>$:/state/tab-1749438307</li>
@@ -188,6 +190,8 @@ Error message and password prompt
 <li>$:/themes/tiddlywiki/snowwhite</li>
 
 <li>$:/themes/tiddlywiki/vanilla</li>
+
+<li>配置MySQL的vscode开发环境</li>
 
 <li>Home</li>
 
@@ -10383,6 +10387,9 @@ Error message and password prompt
 <div created="20210703153549233" modified="20210703153605623" title="$:/SiteTitle">
 <pre>Longfei's wiki</pre>
 </div>
+<div created="20210704063947348" modified="20210704063947348" title="$:/state/showeditpreview">
+<pre>yes</pre>
+</div>
 <div created="20210704063622328" modified="20210704063631001" title="$:/state/tab--1418380610">
 <pre>$:/core/ui/ControlPanel/Plugins/Add/Plugins</pre>
 </div>
@@ -10398,7 +10405,7 @@ Error message and password prompt
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="Home" title="$:/StoryList">
+<div list="配置MySQL的vscode开发环境 Home" title="$:/StoryList">
 <pre></pre>
 </div>
 <div author="JeremyRuston" core-version="&gt;=5.0.0" dependents="$:/themes/tiddlywiki/vanilla" description="Emphasises individual tiddlers" name="Snow White" plugin-priority="0" plugin-type="theme" title="$:/themes/tiddlywiki/snowwhite" type="application/json" version="5.1.23">
@@ -10509,6 +10516,78 @@ Error message and password prompt
         }
     }
 }</pre>
+</div>
+<div created="20210704063901526" modified="20210704064011121" tags="mysql database" title="配置MySQL的vscode开发环境" type="text/x-markdown">
+<pre>## 下载MySQL源码
+
+1. 点击下载 [mysql-boost-8.0.25.tar.gz](https://cdn.mysql.com//Downloads/MySQL-8.0/mysql-boost-8.0.25.tar.gz)
+
+2. 解压到开发目录下
+
+## 配置vscode
+
+1. 安装插件
+
+   C/C++（ms-vscode.cpptools）
+
+   CMake Tools（ms-vscode.cmake-tools）
+
+2. 打开mysql源码目录
+
+3. 配置《settings.json》
+
+   ```json
+   {
+       &quot;cmake.configureOnOpen&quot;: true,
+       &quot;cmake.buildDirectory&quot;: &quot;${workspaceFolder}/bld&quot;,
+       &quot;cmake.installPrefix&quot;: &quot;${workspaceFolder}/inst&quot;,
+       &quot;cmake.configureArgs&quot;: [
+           &quot;-DWITH_UNIT_TESTS=OFF&quot;,
+           &quot;-DCMAKE_BUILD_TYPE=Debug&quot;,
+           &quot;-DWITH_BOOST=boost&quot;
+       ]
+   }
+   ```
+
+## 通过cmake配置、编译MySQL
+
+1. ctrl+shift+P，输入CMake: Configure
+
+2. ctrl+shift+P，输入CMake: Build
+
+   等待编译完成，需要较长的时间
+
+## 初始化data目录
+
+```bash
+cd bld
+bin/mysqld --initialize-insecure
+```
+
+## 启动MySQL
+
+1. ctrl+shift+P，输入CMake: Set Debug Target，选择mysqld
+
+2. ctrl+shift+P，输入CMake: Debug
+
+3. 使用mysql client连接到mysqld
+
+   ```bash
+   cd bld
+   bin/mysql -h127.0.0.1 -P3306 -uroot
+   ```
+
+   ```mysql
+   mysql&gt; select version();
+   +--------------+
+   | version()    |
+   +--------------+
+   | 8.0.25-debug |
+   +--------------+
+   1 row in set (0.01 sec)
+   ```
+
+   </pre>
 </div>
 <div created="20210703154626219" modified="20210703154840202" tags="" title="Home">
 <pre>! 👏 欢迎来到我的个人wiki系统
