@@ -141,8 +141,6 @@ Error message and password prompt
 
 <p>This <a class="tc-tiddlylink-external" href="https://tiddlywiki.com" rel="noopener noreferrer" target="_blank">TiddlyWiki</a> contains the following tiddlers:</p><p><ul>
 
-<li>📒 Leetcode刷题笔记</li>
-
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/advanced-search</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/encryption</li>
@@ -152,6 +150,8 @@ Error message and password prompt
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/home</li>
 
 <li>$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/refresh</li>
+
+<li>$:/config/RelinkOnRename</li>
 
 <li>$:/config/TextEditor/EditorHeight/Mode</li>
 
@@ -205,6 +205,8 @@ Error message and password prompt
 
 <li>$:/themes/tiddlywiki/vanilla/options/sidebarlayout</li>
 
+<li>反转链表</li>
+
 <li>配置MySQL的vscode开发环境</li>
 
 <li>Database</li>
@@ -227,59 +229,6 @@ Error message and password prompt
 <!--~~ Ordinary tiddlers ~~-->
 
 <div id="storeArea" style="display:none;">
-<div created="20210706135917132" modified="20210706144431859" tags="刷题" title="📒 Leetcode刷题笔记" type="text/x-markdown">
-<pre>反转链表
-
-递归：
-- ans的初始化很重要，因为`if`只处理了空链表的场景
-- 只有在大于等于2个元素时才会进入`while`循环
-- 通过`head-&gt;next`可以快速定位到反转后到链表的尾部
-
-```c++
-class Solution {
- public:
-  ListNode* reverseList(ListNode* head) {
-    // recursion
-    if (head == nullptr) return head;
-    ListNode* ans = head;
-    while (head-&gt;next != nullptr) {
-      ans = reverseList(head-&gt;next);
-      head-&gt;next-&gt;next = head;
-      head-&gt;next = nullptr;
-    }
-    return ans;
-  }
-};
-```
-
-迭代：
-
-将`prev`初始化为空指针，可以避免对于头指针的`next` 置空的特殊处理
-
-1. 使用`temp`保存`curr`的下一个
-2. 将`curr`的`next`指向`prev`
-3. `prev`和`curr`依次向后移，处理下一个
-
-```c++
-class Solution {
- public:
-  ListNode* reverseList(ListNode* head) {
-    // iteration
-    ListNode* prev = NULL;
-    ListNode* cur = head;
-    while (cur) {
-      ListNode* temp = cur-&gt;next;
-      cur-&gt;next = prev;
-      prev = cur;
-      cur = temp;
-    }
-    return prev;
-  }
-};
-```
-
-</pre>
-</div>
 <div created="20210704063133190" modified="20210704063133190" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/advanced-search">
 <pre>show</pre>
 </div>
@@ -294,6 +243,9 @@ class Solution {
 </div>
 <div created="20210704063842881" modified="20210704063842881" title="$:/config/PageControlButtons/Visibility/$:/core/ui/Buttons/refresh">
 <pre>show</pre>
+</div>
+<div created="20210706144448554" modified="20210706144448554" title="$:/config/RelinkOnRename">
+<pre>yes</pre>
 </div>
 <div created="20210704064500090" modified="20210704064503685" title="$:/config/TextEditor/EditorHeight/Mode">
 <pre>auto</pre>
@@ -10488,7 +10440,7 @@ class Solution {
 <div title="$:/status/RequireReloadDueToPluginChange">
 <pre>no</pre>
 </div>
-<div list="[[📒 Leetcode刷题笔记]] Home" title="$:/StoryList">
+<div list="反转链表 Home" title="$:/StoryList">
 <pre></pre>
 </div>
 <div created="20210704064213977" modified="20210704064215693" title="$:/theme">
@@ -10605,6 +10557,59 @@ class Solution {
 </div>
 <div created="20210704064303540" modified="20210704064303540" title="$:/themes/tiddlywiki/vanilla/options/sidebarlayout">
 <pre>fluid-fixed</pre>
+</div>
+<div created="20210706135917132" modified="20210706144501297" tags="刷题" title="反转链表" type="text/x-markdown">
+<pre>反转链表
+
+递归：
+- ans的初始化很重要，因为`if`只处理了空链表的场景
+- 只有在大于等于2个元素时才会进入`while`循环
+- 通过`head-&gt;next`可以快速定位到反转后到链表的尾部
+
+```c++
+class Solution {
+ public:
+  ListNode* reverseList(ListNode* head) {
+    // recursion
+    if (head == nullptr) return head;
+    ListNode* ans = head;
+    while (head-&gt;next != nullptr) {
+      ans = reverseList(head-&gt;next);
+      head-&gt;next-&gt;next = head;
+      head-&gt;next = nullptr;
+    }
+    return ans;
+  }
+};
+```
+
+迭代：
+
+将`prev`初始化为空指针，可以避免对于头指针的`next` 置空的特殊处理
+
+1. 使用`temp`保存`curr`的下一个
+2. 将`curr`的`next`指向`prev`
+3. `prev`和`curr`依次向后移，处理下一个
+
+```c++
+class Solution {
+ public:
+  ListNode* reverseList(ListNode* head) {
+    // iteration
+    ListNode* prev = NULL;
+    ListNode* cur = head;
+    while (cur) {
+      ListNode* temp = cur-&gt;next;
+      cur-&gt;next = prev;
+      prev = cur;
+      cur = temp;
+    }
+    return prev;
+  }
+};
+```
+
+</pre>
 </div>
 <div created="20210704063901526" modified="20210704065445239" tags="mysql database" title="配置MySQL的vscode开发环境" type="text/x-markdown">
 <pre>## 下载mysql源码
